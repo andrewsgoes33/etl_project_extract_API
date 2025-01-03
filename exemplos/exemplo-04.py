@@ -1,11 +1,18 @@
 import requests
 import json
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 url = 'https://api.openai.com/v1/chat/completions'
 
+
+open_api_key = os.getenv('OPENAI_API_KEY')
+
 headers = {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer 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'
+    'Authorization': f'Bearer {open_api_key} '
 }
 
 data = {
