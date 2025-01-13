@@ -1,3 +1,4 @@
+import time
 import requests
 from tinydb import TinyDB
 from datetime import datetime
@@ -33,9 +34,11 @@ def salvar_dados_tinydb(dados, db_name='bitcoin.json'):
 
 if __name__ == "__main__":
     #Extração dos dados
-    dados_json = extract_dados_bitcoin()
-    dados_tratados = transform_dados_bitcoin(dados_json)
-    salvar_dados_tinydb(dados_tratados)
+    while True:
+        dados_json = extract_dados_bitcoin()
+        dados_tratados = transform_dados_bitcoin(dados_json)
+        salvar_dados_tinydb(dados_tratados)
+        time.sleep(15)
 
 
 #Código printar o resultado da função, buscando a coluna 'amount' dentro da coluna 'data'
